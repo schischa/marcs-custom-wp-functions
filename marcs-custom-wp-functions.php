@@ -54,4 +54,4 @@ function chr_replace_howdy($wp_admin_bar) {
         'title' => $greeting,
     ));
 }
-add_filter('admin_bar_menu', 'chr_replace_howdy', 25);
+add_filter('admin_bar_menu', 'chr_replace_howdy', PHP_INT_MAX);
