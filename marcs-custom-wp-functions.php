@@ -55,3 +55,11 @@ function chr_replace_howdy($wp_admin_bar) {
     ));
 }
 add_filter('admin_bar_menu', 'chr_replace_howdy', PHP_INT_MAX);
+
+// Add theme-color Meta Tag
+add_action('wp_head', 'inject_wp_head');
+function inject_wp_head() {
+    ?>
+    <meta name="theme-color" content="#dce7c1">
+    <?php
+}
