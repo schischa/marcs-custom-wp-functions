@@ -11,18 +11,16 @@ This plugin includes the following features:
 3. **Remove WordPress Logo from Admin Bar**: Removes the default WordPress logo and links from the admin bar for a cleaner interface.
 4. **Change "Howdy" Text to "Hello" in Admin Bar**: Replaces the "Howdy," greeting in the WordPress admin bar with "Hello" for a more neutral tone.
 5. **Add Theme-Color Meta Tag**: Adds a `<meta>` tag to set a theme color for modern browsers, providing a more cohesive visual experience. *(Default: `#db5945`, can be changed to fit your site's color scheme.)*
+6. **White-label the Login Page**: Replaces the WordPress login screen logo with your site's custom logo (if set in your theme options). If no custom logo is set, the default WordPress logo will be used. Also modifies the login logo link and title attribute to point to your site's homepage and display your site's name.
 
 ## Features
 
-- **Disable URL Field in Comments**: Automatically removes the URL input field from the comment form to minimize external links and reduce the chance of spam.
-  
-- **Disable Emojis**: Disables the emoji detection script, related styles, and TinyMCE emoji plugin, improving page load speed and minimizing unnecessary content for GDPR compliance.
-
-- **Remove WordPress Logo in Admin Bar**: Removes the WordPress logo and its associated links from the admin bar to simplify the admin interface.
-
-- **Change Howdy to Hello in Admin Bar**: Customizes the greeting in the admin bar to replace "Howdy," with "Hello" for a more user-friendly approach.
-
-- **Add Theme-Color Meta Tag**: Inserts a `<meta>` tag in the `<head>` section to set a custom theme color for supported browsers and devices. Update the HEX value (`#db5945`) in the plugin code to match your website's color scheme.
+- **Disable URL Field in Comments**
+- **Disable Emojis**
+- **Remove WordPress Logo in Admin Bar**
+- **Change "Howdy" to "Hello" in Admin Bar**
+- **Add Theme-Color Meta Tag**
+- **White-label the Login Page**
 
 ## Installation
 
@@ -38,10 +36,11 @@ This plugin includes the following features:
 Once the plugin is activated, it will automatically:
 
 - Remove the URL field from the comment form.
-- Disable emoji-related scripts, styles, and the TinyMCE emoji plugin.
+- Disable emojis and related scripts/styles.
 - Remove the WordPress logo and links from the admin bar.
 - Replace the "Howdy," greeting in the admin bar with "Hello."
-- Add a theme-color meta tag to the site's `<head>` for modern browser styling.
+- Add a theme-color meta tag for supported browsers.
+- Change the login page logo to your custom logo (if set), link the logo to your site's homepage, and update the title attribute to your site's name.
 
 ## Customization
 
@@ -49,13 +48,11 @@ You can add additional functions or modify existing ones within this plugin to f
 
 ## Changelog
 
+**Version 1.1:**
+- White-labelling the login page to use the site's custom logo and updated login URL/title attributes.
+
 **Version 1.0:**
-- Initial release with features to:
-  - Disable the URL field in comments.
-  - Disable emojis for GDPR compliance.
-  - Remove the WordPress logo from the admin bar.
-  - Change "Howdy" to "Hello" in the admin bar.
-  - Add a theme-color meta tag.
+- Initial release with features to disable the URL field in comments, disable emojis for GDPR compliance, remove the WordPress logo from the admin bar, change "Howdy" to "Hello," and add a theme-color meta tag.
 
 ## License
 
