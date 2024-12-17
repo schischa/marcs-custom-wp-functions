@@ -36,6 +36,9 @@ Once activated:
 
 ## Changelog
 
+**Version 1.4.1:**
+- Enhanced the "disable comments entirely" option to fully remove the comment icon and count from the admin bar.
+
 **Version 1.4:**
 - Added setting to choose between removing the comment URL field only or disabling all comments entirely.  
   *Note: Comment disabling code sourced from [WPBeginner](https://www.wpbeginner.com/).*

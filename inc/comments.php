@@ -20,7 +20,7 @@ if ($disable_comments) {
         // Remove comments metabox from dashboard
         remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
         
-        // Disable support for comments and trackbacks in post types
+        // Disable support for comments and trackbacks in all post types
         foreach (get_post_types() as $post_type) {
             if (post_type_supports($post_type, 'comments')) {
                 remove_post_type_support($post_type, 'comments');
@@ -41,15 +41,22 @@ if ($disable_comments) {
         remove_menu_page('edit-comments.php');
     });
 
-    // Remove comments links from admin bar
+    // Remove comments links from admin bar (WPBeginner code)
     add_action('init', function () {
         if (is_admin_bar_showing()) {
             remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
         }
     });
 
+    // Ensure the comment icon is completely removed from the admin bar
+    // by removing the comments node explicitly.
+    add_action('admin_bar_menu', 'marcs_cwf_remove_comments_icon', 999);
+    function marcs_cwf_remove_comments_icon($wp_admin_bar) {
+        $wp_admin_bar->remove_node('comments');
+    }
+
 } else {
-    // Default behavior: remove URL field from comment form only
+    // Default behavior: remove URL field from the comment form only
     add_filter('comment_form_default_fields', 'cfp_remove_url_field');
     function cfp_remove_url_field($fields) {
         if (isset($fields['url'])) {
