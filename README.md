@@ -2,67 +2,63 @@
 
 ## Description
 
-**Marc's Custom WP Functions Plugin** helps you centralize common WordPress customizations and provides a settings page to configure them without editing code. Your modifications remain intact even when you update or switch themes.
+**Marc's Custom WP Functions Plugin** helps you centralize common WordPress customizations and provides a settings page for configuration. Your modifications persist through theme updates, allowing for easy, code-free adjustments.
 
 ### Key Features
-- **Disable URL Field in the Comment Form OR Disable Comments Entirely:**  
-  Choose between simply removing the website field from the comment form or completely disabling comments site-wide. The "disable comments" code is sourced from [WPBeginner](https://www.wpbeginner.com/).
-- **Disable Emojis:** Remove unnecessary emoji scripts for GDPR compliance and improved performance.
-- **Remove WordPress Logo in Admin Bar:** Create a cleaner, more professional admin interface.
-- **Change "Howdy" to "Hello" in the Admin Bar:** For a more user-friendly greeting.
-- **Add Theme-Color Meta Tag:** Easily define a custom theme color for modern browsers.
-- **White-Label the Login Page:** Replace the WordPress login logo with your site's custom logo.
-- **Dedicated Settings Page:** Configure options (such as theme color and comment settings) under **Settings > Marc's Custom WP Functions**.
+- **Comment Settings**: Remove the URL field only or disable comments entirely (code sourced from [WPBeginner](https://www.wpbeginner.com/)).
+- **Disable Emojis**: For GDPR compliance and improved performance.
+- **Remove WordPress Logo in Admin Bar**: Make the admin interface cleaner.
+- **Change "Howdy" to "Hello"**: More user-friendly greeting in the admin bar.
+- **Theme-Color Meta Tag**: Easily set a custom theme color for modern browsers.
+- **White-Label the Login Page**: Use your site's logo on the login screen.
+- **Disable XML-RPC**: Improve security by disabling XML-RPC if not needed.
+- **Dedicated Settings Page**: Manage all these settings under **Settings > Marc's Custom WP Functions**.
 
 ## Installation
 
-1. Download the plugin or clone it from the repository.
-2. Upload the `marcs-custom-wp-functions` folder to the `/wp-content/plugins/` directory.
-3. Activate **Marc's Custom WP Functions Plugin** in **Plugins > Installed Plugins** within the WordPress admin.
+1. Download or clone the repository.
+2. Upload `marcs-custom-wp-functions` to `/wp-content/plugins/`.
+3. Activate **Marc's Custom WP Functions Plugin** in **Plugins > Installed Plugins**.
 
 ## Usage
 
-Once activated:
-- All default customizations apply immediately.
-- Visit **Settings > Marc's Custom WP Functions** to configure:
-  - **Comment Settings**: Choose to remove only the URL field from comments or disable all comments entirely.
-  - **Theme Color**: Set the theme-color meta tag for modern browsers.
+- After activation, changes are applied immediately.
+- Go to **Settings > Marc's Custom WP Functions**:
+  - Adjust comment settings.
+  - Set the theme-color.
+  - Disable XML-RPC if desired.
 
 ## Customization
 
-- Adjust comment behavior (remove URL field or disable comments completely) via the settings page.
-- Change the theme-color directly in the plugin settings.
-- Add additional features by creating new files in the `inc` directory and including them in the main plugin file.
+- Configure options via the settings page.
+- Add new features by extending the `inc` directory.
 
 ## Changelog
 
+**Version 1.5:**
+- Added an option to disable XML-RPC for improved security.
+
 **Version 1.4.1:**
-- Enhanced the "disable comments entirely" option to fully remove the comment icon and count from the admin bar.
+- Enhanced "disable comments" option to fully remove the comment icon/count from the admin bar.
 
 **Version 1.4:**
-- Added setting to choose between removing the comment URL field only or disabling all comments entirely.  
-  *Note: Comment disabling code sourced from [WPBeginner](https://www.wpbeginner.com/).*
+- Added setting to choose between removing the comment URL field only or disabling comments entirely (code from WPBeginner).
 
 **Version 1.3:**
-- Code refactoring and splitting functionalities into separate files for better maintainability.
+- Refactored code into separate files for maintainability.
 
 **Version 1.2:**
-- Introduced a settings page to configure the theme-color meta tag.
+- Introduced a settings page for theme-color configuration.
 
 **Version 1.1:**
 - White-labelling the login page with a custom logo.
 
 **Version 1.0:**
-- Initial release with:
-  - Disabling URL field in comments.
-  - Disabling emojis.
-  - Removing WP logo from the admin bar.
-  - Changing "Howdy" to "Hello" in the admin bar.
-  - Adding a theme-color meta tag.
+- Initial release.
 
 ## License
 
-This plugin is licensed under the GPL2 license.
+GPL2
 
 ## Author
 
