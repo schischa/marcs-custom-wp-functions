@@ -1,5 +1,4 @@
 <?php
-// Add a settings page under "Settings" menu
 add_action('admin_menu', 'marcs_cwf_create_settings_page');
 function marcs_cwf_create_settings_page() {
     add_options_page(
@@ -13,43 +12,49 @@ function marcs_cwf_create_settings_page() {
 
 add_action('admin_init', 'marcs_cwf_register_settings');
 function marcs_cwf_register_settings() {
-    // =========================
-    // = Register Theme Color Setting
-    // =========================
+    // Existing settings...
     register_setting('marcs_cwf_settings_group', 'marcs_cwf_theme_color', array(
         'type'              => 'string',
         'sanitize_callback' => 'sanitize_hex_color',
         'default'           => '#db5945',
     ));
 
-    // =========================
-    // = Register Comments Setting
-    // =========================
     register_setting('marcs_cwf_settings_group', 'marcs_cwf_disable_comments', array(
         'type'              => 'boolean',
         'sanitize_callback' => 'absint',
         'default'           => 0,
     ));
 
-    // =========================
-    // = Register XML-RPC Setting
-    // =========================
     register_setting('marcs_cwf_settings_group', 'marcs_cwf_disable_xmlrpc', array(
         'type'              => 'boolean',
         'sanitize_callback' => 'absint',
         'default'           => 0,
     ));
 
-    // =========================
-    // = Theme Section
-    // =========================
+    // New settings for update email disabling
+    register_setting('marcs_cwf_settings_group', 'marcs_cwf_disable_core_update_emails', array(
+        'type'              => 'boolean',
+        'sanitize_callback' => 'absint',
+        'default'           => 0,
+    ));
+    register_setting('marcs_cwf_settings_group', 'marcs_cwf_disable_plugin_update_emails', array(
+        'type'              => 'boolean',
+        'sanitize_callback' => 'absint',
+        'default'           => 0,
+    ));
+    register_setting('marcs_cwf_settings_group', 'marcs_cwf_disable_theme_update_emails', array(
+        'type'              => 'boolean',
+        'sanitize_callback' => 'absint',
+        'default'           => 0,
+    ));
+
+    // Existing sections...
     add_settings_section(
         'marcs_cwf_theme_section',
         'Theme Settings',
         'marcs_cwf_theme_section_cb',
         'marcs_cwf_settings_group'
     );
-
     add_settings_field(
         'marcs_cwf_theme_color_field',
         'Theme Color',
@@ -58,16 +63,12 @@ function marcs_cwf_register_settings() {
         'marcs_cwf_theme_section'
     );
 
-    // =========================
-    // = Comment Section
-    // =========================
     add_settings_section(
         'marcs_cwf_comment_section',
         'Comment Settings',
         'marcs_cwf_comment_section_cb',
         'marcs_cwf_settings_group'
     );
-
     add_settings_field(
         'marcs_cwf_disable_comments_field',
         'Disable Comments',
@@ -76,16 +77,12 @@ function marcs_cwf_register_settings() {
         'marcs_cwf_comment_section'
     );
 
-    // =========================
-    // = Advanced Section
-    // =========================
     add_settings_section(
         'marcs_cwf_advanced_section',
         'Advanced Settings',
         'marcs_cwf_advanced_section_cb',
         'marcs_cwf_settings_group'
     );
-
     add_settings_field(
         'marcs_cwf_disable_xmlrpc_field',
         'Disable XML-RPC',
@@ -93,26 +90,51 @@ function marcs_cwf_register_settings() {
         'marcs_cwf_settings_group',
         'marcs_cwf_advanced_section'
     );
+
+    // New Updates Notifications Section
+    add_settings_section(
+        'marcs_cwf_updates_section',
+        'Update Notifications',
+        'marcs_cwf_updates_section_cb',
+        'marcs_cwf_settings_group'
+    );
+    add_settings_field(
+        'marcs_cwf_disable_core_update_emails_field',
+        'Disable Core Update Emails',
+        'marcs_cwf_disable_core_update_emails_field_cb',
+        'marcs_cwf_settings_group',
+        'marcs_cwf_updates_section'
+    );
+    add_settings_field(
+        'marcs_cwf_disable_plugin_update_emails_field',
+        'Disable Plugin Update Emails',
+        'marcs_cwf_disable_plugin_update_emails_field_cb',
+        'marcs_cwf_settings_group',
+        'marcs_cwf_updates_section'
+    );
+    add_settings_field(
+        'marcs_cwf_disable_theme_update_emails_field',
+        'Disable Theme Update Emails',
+        'marcs_cwf_disable_theme_update_emails_field_cb',
+        'marcs_cwf_settings_group',
+        'marcs_cwf_updates_section'
+    );
 }
 
-// Callback for the Theme Settings section
 function marcs_cwf_theme_section_cb() {
     echo '<p>Set the theme color used by modern browsers for UI elements.</p>';
 }
 
-// Field callback for Theme Color
 function marcs_cwf_theme_color_field_cb() {
     $theme_color = get_option('marcs_cwf_theme_color', '#db5945');
     echo '<input type="text" name="marcs_cwf_theme_color" value="' . esc_attr($theme_color) . '" class="regular-text" />';
     echo '<p class="description">Enter a valid hex color code (e.g. #db5945).</p>';
 }
 
-// Callback for the Comment Settings section
 function marcs_cwf_comment_section_cb() {
     echo '<p>Configure how comments behave on your website.</p>';
 }
 
-// Field callback for Disable Comments
 function marcs_cwf_disable_comments_field_cb() {
     $disable_comments = get_option('marcs_cwf_disable_comments', 0);
     ?>
@@ -129,12 +151,10 @@ function marcs_cwf_disable_comments_field_cb() {
     <?php
 }
 
-// Callback for the Advanced Settings section
 function marcs_cwf_advanced_section_cb() {
     echo '<p>Configure advanced settings to improve security or adjust site functionality.</p>';
 }
 
-// Field callback for Disable XML-RPC
 function marcs_cwf_disable_xmlrpc_field_cb() {
     $disable_xmlrpc = get_option('marcs_cwf_disable_xmlrpc', 0);
     ?>
@@ -147,7 +167,46 @@ function marcs_cwf_disable_xmlrpc_field_cb() {
     <?php
 }
 
-// Render the settings page
+function marcs_cwf_updates_section_cb() {
+    echo '<p>Control update notification emails. If you don\'t want to receive certain update emails, disable them here.</p>';
+}
+
+function marcs_cwf_disable_core_update_emails_field_cb() {
+    $disable_core = get_option('marcs_cwf_disable_core_update_emails', 0);
+    ?>
+    <fieldset>
+        <label>
+            <input type="checkbox" name="marcs_cwf_disable_core_update_emails" value="1" <?php checked($disable_core, 1); ?>>
+            Disable Core Update Success Emails
+        </label>
+    </fieldset>
+    <?php
+}
+
+function marcs_cwf_disable_plugin_update_emails_field_cb() {
+    $disable_plugin = get_option('marcs_cwf_disable_plugin_update_emails', 0);
+    ?>
+    <fieldset>
+        <label>
+            <input type="checkbox" name="marcs_cwf_disable_plugin_update_emails" value="1" <?php checked($disable_plugin, 1); ?>>
+            Disable Plugin Update Emails
+        </label>
+    </fieldset>
+    <?php
+}
+
+function marcs_cwf_disable_theme_update_emails_field_cb() {
+    $disable_theme = get_option('marcs_cwf_disable_theme_update_emails', 0);
+    ?>
+    <fieldset>
+        <label>
+            <input type="checkbox" name="marcs_cwf_disable_theme_update_emails" value="1" <?php checked($disable_theme, 1); ?>>
+            Disable Theme Update Emails
+        </label>
+    </fieldset>
+    <?php
+}
+
 function marcs_cwf_settings_page_html() {
     if (!current_user_can('manage_options')) {
         return;
