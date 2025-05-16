@@ -4,7 +4,7 @@
  * Description: A simple plugin to handle custom WordPress functions without a child theme.
  * Author URI: https://chiroiu.com
  * Plugin URI: https://github.com/schischa/marcs-custom-wp-functions
- * Version: 1.6
+ * Version: 1.6.1
  * Author: Marc Chiroiu
  * License: GPL2
  */
